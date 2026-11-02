@@ -110,7 +110,6 @@ footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);paddin
       <div class="rule"><b>$5 per ticket</b><span>for every ticket you sell</span></div>
       <div class="rule"><b>1 free ticket</b><span>for every 5 tickets sold (10 sold = 2)</span></div>
       <div class="rule"><b>20 sales</b><span>commission goes up to $7.50 per ticket</span></div>
-      <div class="rule"><b>$200 drink card</b><span>one-off when you reach 20 sales</span></div>
     </div>
   </section>
 
@@ -182,7 +181,7 @@ document.getElementById("tiles").innerHTML = [
 ].map(([k,v,n,hl])=>`<div class="tile${hl?" hl":""}"><div class="k">${k}</div><div class="v">${v}</div>${n?`<div class="n">${n}</div>`:""}</div>`).join("");
 
 document.getElementById("board").innerHTML = rows.map((r,i)=>{
-  const bon = `<span class="${r.bon>0?"earned":""}">${r.bon}</span>${r.tickets>=TIER_AT?' <span class="pill vip">+ $200 drink card</span>':''}`;
+  const bon = `<span class="${r.bon>0?"earned":""}">${r.bon}</span>`;
   return `<tr class="${i<3?"top":""}">
     <td class="rank">${i+1}</td>
     <td><div class="name">${esc(r.code)}</div><span class="pill">${esc(r.state)}</span></td>
