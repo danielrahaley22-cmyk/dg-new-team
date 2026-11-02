@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DG New Team Sales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: hazard-label header, totals strip, leaderboard, state split, weekly winners. Single dark theme by choice. */
+:root{
+  --bg:#121212;
+  --panel:#1c1c1b;
+  --line:#2e2d2a;
+  --ink:#f3f1ea;
+  --muted:#9b978c;
+  --hazard:#ffd21f;
+  --good:#5fd38a;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 48px;display:flex;flex-direction:column;gap:28px}
+.tape{height:10px;background:repeating-linear-gradient(-45deg,var(--hazard) 0 14px,#121212 14px 28px)}
+header{display:flex;gap:16px;align-items:center;padding-top:22px}
+.diamond{flex:none;width:54px;height:54px;transform:rotate(45deg);border:3px solid var(--hazard);display:grid;place-items:center}
+.diamond span{transform:rotate(-45deg);font-family:var(--display);color:var(--hazard);font-size:15px;letter-spacing:.02em}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(24px,6vw,34px);line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.sub{color:var(--muted);font-size:13px;margin-top:4px}
+h2{font-family:var(--display);font-weight:400;font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:12px;height:12px;background:var(--hazard);transform:rotate(45deg)}
+.tiles{display:grid;grid-template-columns:1fr;gap:10px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px}
+.tile .k{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--display);font-size:clamp(22px,5vw,30px);margin-top:6px;font-variant-numeric:tabular-nums}
+.tile .n{color:var(--muted);font-size:12px;margin-top:2px}
+.tile.hl{border-color:var(--hazard)}
+.tile.hl .v{color:var(--hazard)}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.rule{border-left:3px solid var(--hazard);padding:4px 12px}
+.rule b{display:block;font-size:17px}
+.rule span{color:var(--muted);font-size:13px}
+.tablebox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:300px}
+.name+.pill{margin-top:4px}
+.name{word-break:break-all;white-space:normal}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{white-space:normal;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+.rank{font-family:var(--display);color:var(--muted);width:32px}
+tr.top .rank{color:var(--hazard)}
+.name{font-weight:600}
+.code{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.prog{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.bar{width:40px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--hazard)}
+.prog small{color:var(--muted);font-size:12px;text-align:right}
+@media (max-width:640px){th,td{padding:10px 8px}}
+.earned{color:var(--good);font-weight:700}
+.pill.vip{color:var(--hazard);border-color:var(--hazard)}
+.states{display:grid;gap:8px}
+.srow{display:grid;grid-template-columns:90px 1fr 120px;gap:12px;align-items:center}
+.srow .sb{height:12px;background:var(--line);border-radius:3px;overflow:hidden}
+.srow .sb i{display:block;height:100%;background:var(--hazard)}
+.srow .sv{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+.srow .sv b{color:var(--ink)}
+.winners{display:grid;gap:10px}
+.week{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start}
+.week .wk{font-family:var(--display);font-size:15px;text-transform:uppercase}
+.week .dates{color:var(--muted);font-size:12px}
+.week ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.week li{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.week .prize{color:var(--hazard);font-weight:600;font-size:13px}
+.week.tba{border-style:dashed}
+.week.tba .tbatext{color:var(--muted)}
+footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:640px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .rules{grid-template-columns:1fr}
+  .srow{grid-template-columns:76px 1fr 100px}
+  .week{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="tape" aria-hidden="true"></div>
+<div class="wrap">
+  <header>
+    <div class="diamond" aria-hidden="true"><span>DG</span></div>
+    <div>
+      <h1>New Promoter Team · Sales</h1>
+      <div class="sub">Dangerous Goods XXL · January 2027 · Updated <span id="asof"></span></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="t-totals">
+    <h2 id="t-totals">Team totals</h2>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section aria-labelledby="t-rules">
+    <h2 id="t-rules">How you earn</h2>
+    <div class="rules">
+      <div class="rule"><b>$5 per ticket</b><span>for every ticket you sell</span></div>
+      <div class="rule"><b>1 free ticket</b><span>for every 5 tickets sold (10 sold = 2)</span></div>
+      <div class="rule"><b>20 sales</b><span>commission goes up to $7.50 per ticket</span></div>
+      <div class="rule"><b>$200 drink card</b><span>one-off when you reach 20 sales</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-board">
+    <h2 id="t-board">Leaderboard</h2>
+    <div class="tablebox">
+      <table>
+        <thead><tr>
+          <th></th><th>Code</th>
+          <th class="num">Tickets sold</th><th class="num">Tickets earnt</th>
+        </tr></thead>
+        <tbody id="board"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-states">
+    <h2 id="t-states">By state</h2>
+    <div class="states" id="states"></div>
+  </section>
+
+  <section aria-labelledby="t-win">
+    <h2 id="t-win">Incentives</h2>
+    <div class="winners" id="winners"></div>
+  </section>
+
+  <footer>Counts tickets sold on your own promo code for your own state's event. Only promoters with sales are shown. Questions about your numbers? Message Daniel.</footer>
+</div>
+
+<script>
+/* ---------- DATA: update these each sales refresh ---------- */
+const AS_OF = "2 Nov 2026, 12:02pm";
+/* inc = tickets sold before Mon 9 Nov 12pm (new team incentive)
+   merch = tickets sold from Mon 2 Nov 12pm to Fri 6 Nov 12pm (merch incentive) */
+const SALES = [
+  {name:"Nicole",  code:"NIIXDG",          state:"Sydney",    tickets:4, sales:747.16, week:4, inc:4, merch:0},
+  {name:"Lena",    code:"LENADG",          state:"Sydney",    tickets:3, sales:599.57, week:3, inc:3, merch:0},
+  {name:"Lachlan", code:"LACHIM",          state:"Perth",     tickets:3, sales:555.47, week:2, inc:3, merch:0},
+  {name:"Sarah",   code:"SARAHLOVESYOUDG", state:"Perth",     tickets:2, sales:373.58, week:2, inc:2, merch:0},
+  {name:"Jamey",   code:"JAMEYDG",         state:"Melbourne", tickets:2, sales:393.18, week:2, inc:2, merch:0},
+  {name:"Imogen",  code:"IMMYDG",          state:"Brisbane",  tickets:1, sales:211.29, week:0, inc:1, merch:0}
+];
+const STATES = ["Adelaide","Brisbane","Perth","Melbourne","Sydney"];
+
+/* ---------- RULES ---------- */
+const TIER_AT = 20, RATE_LOW = 5, RATE_HIGH = 7.5, FREE_EVERY = 5;
+const commission = t => t <= TIER_AT ? t*RATE_LOW : TIER_AT*RATE_LOW + (t-TIER_AT)*RATE_HIGH;
+const bonus = r => Math.floor(r.tickets / FREE_EVERY);          /* normal free tickets only */
+const INCENTIVES = [
+  {title:"New Promoter Incentive", ends:"Ends Mon 9 Nov, 12pm",
+   prize:"3 tickets = free ticket · 5 tickets = VIP ticket (one or the other)",
+   win:r => r.inc>=5 ? "VIP ticket" : r.inc>=3 ? "Free ticket" : null, by:r=>r.inc},
+  {title:"Merch Incentive", ends:"Mon 2 Nov 12pm to Fri 6 Nov, 12pm",
+   prize:"3 tickets this week = free item of merch",
+   win:r => r.merch>=3 ? "Free merch" : null, by:r=>r.merch}
+];
+
+/* ---------- RENDER ---------- */
+const money = n => "$" + n.toLocaleString("en-AU",{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("asof").textContent = AS_OF;
+
+const rows = SALES.filter(r=>r.tickets>0).map(r=>({...r,comm:commission(r.tickets),bon:bonus(r)}))
+  .sort((a,b)=>b.tickets-a.tickets || b.sales-a.sales);
+const tot = rows.reduce((a,r)=>({t:a.t+r.tickets,s:a.s+r.sales,c:a.c+r.comm,b:a.b+r.bon,w:a.w+(r.week||0)}),{t:0,s:0,c:0,b:0,w:0});
+
+document.getElementById("tiles").innerHTML = [
+  ["Tickets sold", tot.t, tot.w+" in the last 7 days · "+rows.length+" promoters selling", true]
+].map(([k,v,n,hl])=>`<div class="tile${hl?" hl":""}"><div class="k">${k}</div><div class="v">${v}</div>${n?`<div class="n">${n}</div>`:""}</div>`).join("");
+
+document.getElementById("board").innerHTML = rows.map((r,i)=>{
+  const bon = `<span class="${r.bon>0?"earned":""}">${r.bon}</span>${r.tickets>=TIER_AT?' <span class="pill vip">+ $200 drink card</span>':''}`;
+  return `<tr class="${i<3?"top":""}">
+    <td class="rank">${i+1}</td>
+    <td><div class="name">${esc(r.code)}</div><span class="pill">${esc(r.state)}</span></td>
+    <td class="num">${r.tickets}</td>
+    <td class="num">${bon}</td></tr>`;
+}).join("");
+
+const byState = STATES.map(s=>{
+  const rs = rows.filter(r=>r.state===s);
+  return {s,t:rs.reduce((a,r)=>a+r.tickets,0),p:rs.length};
+}).sort((a,b)=>b.t-a.t);
+const maxT = Math.max(1,...byState.map(x=>x.t));
+document.getElementById("states").innerHTML = byState.map(x=>
+  `<div class="srow"><div>${x.s}</div><div class="sb"><i style="width:${x.t/maxT*100}%"></i></div>
+   <div class="sv"><b>${x.t}</b> tix · ${x.p} selling</div></div>`).join("");
+
+document.getElementById("winners").innerHTML = INCENTIVES.map(w=>{
+  const q = rows.filter(r=>w.win(r)).sort((a,b)=>w.by(b)-w.by(a));
+  return `<div class="week${q.length?"":" tba"}">
+    <div><div class="wk">${esc(w.title)}</div><div class="dates">${esc(w.ends)}</div></div>
+    <div><div class="prize" style="margin-bottom:8px">${esc(w.prize)}</div>
+    ${q.length
+      ? `<ul>${q.map(r=>`<li><span><b>${esc(r.code)}</b> <span class="code">${esc(r.state)} · ${w.by(r)} tix</span></span><span class="prize">${esc(w.win(r))}</span></li>`).join("")}</ul>`
+      : `<div class="tbatext">No one has qualified yet. Be the first.</div>`}
+    </div></div>`;
+}).join("");
+</script>
+</body>
+</html>
