@@ -17,6 +17,7 @@
   --muted:#9b978c;
   --hazard:#ffd21f;
   --good:#5fd38a;
+  --red:#ff4a3d;
   --display:"Archivo Black","Arial Black",Impact,sans-serif;
   --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:dark;
@@ -39,6 +40,7 @@ h2::before{content:"";width:12px;height:12px;background:var(--hazard);transform:
 .tile .v{font-family:var(--display);font-size:clamp(22px,5vw,30px);margin-top:6px;font-variant-numeric:tabular-nums}
 .tile .n{color:var(--muted);font-size:12px;margin-top:2px}
 .tile.hl{border-color:var(--hazard)}
+.tiles .tile:nth-child(2){border-color:var(--red)}
 .tile.hl .v{color:var(--hazard)}
 .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .rule{border-left:3px solid var(--hazard);padding:4px 12px}
