@@ -189,16 +189,18 @@ footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);paddin
 
 <script>
 /* ---------- DATA: update these each sales refresh ---------- */
-const AS_OF = "2 Nov 2026, 12:02pm";
+const AS_OF = "4 Nov 2026, 7:30pm";
 /* inc = tickets sold before Mon 9 Nov 12pm (new team incentive)
    merch = tickets sold from Mon 2 Nov 12pm to Fri 6 Nov 12pm (merch incentive) */
 const SALES = [
-  {name:"Nicole",  code:"NIIXDG",          state:"Sydney",    tickets:4, sales:747.16, week:4, inc:4, merch:0},
-  {name:"Lena",    code:"LENADG",          state:"Sydney",    tickets:3, sales:599.57, week:3, inc:3, merch:0},
-  {name:"Lachlan", code:"LACHIM",          state:"Perth",     tickets:3, sales:555.47, week:2, inc:3, merch:0},
-  {name:"Sarah",   code:"SARAHLOVESYOUDG", state:"Perth",     tickets:2, sales:373.58, week:2, inc:2, merch:0},
-  {name:"Jamey",   code:"JAMEYDG",         state:"Melbourne", tickets:2, sales:393.18, week:2, inc:2, merch:0},
-  {name:"Imogen",  code:"IMMYDG",          state:"Brisbane",  tickets:1, sales:211.29, week:0, inc:1, merch:0}
+  {name:"Nicole", code:"NIIXDG", state:"Sydney", tickets:4, sales:747.16, week:0, inc:4, merch:0},
+  {name:"Lena", code:"LENADG", state:"Sydney", tickets:3, sales:599.57, week:3, inc:3, merch:0},
+  {name:"Lachlan", code:"LACHIM", state:"Perth", tickets:3, sales:555.47, week:2, inc:3, merch:0},
+  {name:"Jamey", code:"JAMEYDG", state:"Melbourne", tickets:2, sales:393.18, week:0, inc:2, merch:0},
+  {name:"Dylan", code:"IMDYLANDDG", state:"Sydney", tickets:2, sales:373.58, week:2, inc:2, merch:2},
+  {name:"Sarah", code:"SARAHLOVESYOUDG", state:"Perth", tickets:2, sales:373.58, week:0, inc:2, merch:0},
+  {name:"Jade", code:"XENODG", state:"Sydney", tickets:2, sales:373.58, week:2, inc:2, merch:2},
+  {name:"Imogen", code:"IMMYDG", state:"Brisbane", tickets:1, sales:211.29, week:0, inc:1, merch:0}
 ];
 const STATES = ["Adelaide","Brisbane","Perth","Melbourne","Sydney"];
 
