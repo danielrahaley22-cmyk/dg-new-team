@@ -190,12 +190,14 @@ footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);paddin
 <script>
 /* ---------- DATA: update these each sales refresh ---------- */
 const AS_OF = "4 Nov 2026, 7:30pm";
+/* week = tickets sold this team week (Mon–Sun). Week 1 = w/c 19 Oct. */
+const WEEK_LABEL = "Week 3 (2–8 Nov)";
 /* inc = tickets sold before Mon 9 Nov 12pm (new team incentive)
    merch = tickets sold from Mon 2 Nov 12pm to Fri 6 Nov 12pm (merch incentive) */
 const SALES = [
   {name:"Nicole", code:"NIIXDG", state:"Sydney", tickets:4, sales:747.16, week:0, inc:4, merch:0},
-  {name:"Lena", code:"LENADG", state:"Sydney", tickets:3, sales:599.57, week:3, inc:3, merch:0},
-  {name:"Lachlan", code:"LACHIM", state:"Perth", tickets:3, sales:555.47, week:2, inc:3, merch:0},
+  {name:"Lena", code:"LENADG", state:"Sydney", tickets:3, sales:599.57, week:0, inc:3, merch:0},
+  {name:"Lachlan", code:"LACHIM", state:"Perth", tickets:3, sales:555.47, week:0, inc:3, merch:0},
   {name:"Jamey", code:"JAMEYDG", state:"Melbourne", tickets:2, sales:393.18, week:0, inc:2, merch:0},
   {name:"Dylan", code:"IMDYLANDDG", state:"Sydney", tickets:2, sales:373.58, week:2, inc:2, merch:2},
   {name:"Sarah", code:"SARAHLOVESYOUDG", state:"Perth", tickets:2, sales:373.58, week:0, inc:2, merch:0},
@@ -227,7 +229,7 @@ const rows = SALES.filter(r=>r.tickets>0).map(r=>({...r,comm:commission(r.ticket
 const tot = rows.reduce((a,r)=>({t:a.t+r.tickets,s:a.s+r.sales,c:a.c+r.comm,b:a.b+r.bon,w:a.w+(r.week||0)}),{t:0,s:0,c:0,b:0,w:0});
 
 document.getElementById("tiles").innerHTML = [
-  ["Tickets sold", tot.t, tot.w+" in the last 7 days · "+rows.length+" promoters selling", true]
+  ["Tickets sold", tot.t, tot.w+" in "+WEEK_LABEL+" · "+rows.length+" promoters selling", true]
 ].map(([k,v,n,hl])=>`<div class="tile${hl?" hl":""}"><div class="k">${k}</div><div class="v">${v}</div>${n?`<div class="n">${n}</div>`:""}</div>`).join("");
 
 document.getElementById("board").innerHTML = rows.map((r,i)=>{
