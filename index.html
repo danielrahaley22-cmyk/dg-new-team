@@ -224,6 +224,9 @@ const TIER_AT = 20, RATE_LOW = 5, RATE_HIGH = 7.5, FREE_EVERY = 5;
 const commission = t => t <= TIER_AT ? t*RATE_LOW : TIER_AT*RATE_LOW + (t-TIER_AT)*RATE_HIGH;
 const bonus = r => Math.floor(r.tickets / FREE_EVERY);          /* normal free tickets only */
 const INCENTIVES = [
+  {title:"This Week's Incentive", ends:"Mon 9 Nov to Sun 15 Nov",
+   prize:"3–5 tickets = $50 cash · 6+ tickets = $100 cash · 5+ tickets = in the draw for a backstage pass (one winner per state)",
+   win:r => r.week>=6 ? "$100 cash + backstage draw" : r.week>=5 ? "$50 cash + backstage draw" : r.week>=3 ? "$50 cash" : null, by:r=>r.week},
   {title:"New Promoter Incentive", ends:"Ends Mon 9 Nov, 12pm",
    prize:"3 tickets = free ticket · 5 tickets = VIP ticket (one or the other)",
    win:r => r.inc>=5 ? "VIP ticket" : r.inc>=3 ? "Free ticket" : null, by:r=>r.inc},
