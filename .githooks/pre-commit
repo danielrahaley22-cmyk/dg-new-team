@@ -1,0 +1,9 @@
+#!/bin/sh
+# Blocks commits that would put contact details into this public repo.
+email=$(git config user.email)
+case "$email" in
+  *users.noreply.github.com) ;;
+  *) echo "BLOCKED: git user.email is not your GitHub no-reply address."
+     echo "  Copy it from GitHub > Settings > Emails, then: git config user.email <address>"; exit 1 ;;
+esac
+exec python3 refresh.py --check

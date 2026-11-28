@@ -1,0 +1,80 @@
+{
+ "baseline": {
+  "AVA10DG|Melbourne": 1,
+  "CAITRDG|Perth": 2,
+  "CARMENDG|Perth": 0,
+  "CHARLYBDG|Brisbane": 1,
+  "CHRISTYLEUNGDG|Sydney": 0,
+  "DJTRAXONDG|Perth": 1,
+  "IMDYLANDDG|Sydney": 2,
+  "IMMYDG|Brisbane": 3,
+  "IS4BELXODG|Sydney": 0,
+  "JAMEYDG|Melbourne": 4,
+  "LACHIM|Perth": 5,
+  "LANIDG|Sydney": 1,
+  "LENADG|Sydney": 3,
+  "LILADG|Sydney": 2,
+  "LILY5|Melbourne": 5,
+  "MRWAUZERDG|Melbourne": 1,
+  "NICSDG|Melbourne": 0,
+  "NIIXDG|Sydney": 5,
+  "OLDDUCKRAVERSDG|Sydney": 4,
+  "RODSTICKDG|Sydney": 4,
+  "SARAHLOVESYOUDG|Perth": 4,
+  "SIENNAFGDG|Melbourne": 2,
+  "SPIKELEVAINDG|Melbourne": 2,
+  "SR2211DG|Melbourne": 4,
+  "SUSANDG|Brisbane": 9,
+  "TDOGDG|Brisbane": 0,
+  "TOMSDG|Brisbane": 1,
+  "TWISTEDDG|Sydney": 4,
+  "XENODG|Sydney": 2
+ },
+ "last_refresh": {
+  "at": "2026-11-27T11:25",
+  "tickets": {
+   "AVA10DG|Melbourne": 1,
+   "CAITRDG|Perth": 2,
+   "CARMENDG|Perth": 2,
+   "CHARLYBDG|Brisbane": 1,
+   "CHRISTYLEUNGDG|Sydney": 4,
+   "DJTRAXONDG|Perth": 1,
+   "IMDYLANDDG|Sydney": 2,
+   "IMMYDG|Brisbane": 3,
+   "IS4BELXODG|Sydney": 3,
+   "JAMEYDG|Melbourne": 4,
+   "LACHIM|Perth": 5,
+   "LANIDG|Sydney": 1,
+   "LENADG|Sydney": 3,
+   "LILADG|Sydney": 2,
+   "LILY5|Melbourne": 5,
+   "MRWAUZERDG|Melbourne": 1,
+   "NICSDG|Melbourne": 2,
+   "NIIXDG|Sydney": 5,
+   "OLDDUCKRAVERSDG|Sydney": 4,
+   "RODSTICKDG|Sydney": 4,
+   "SARAHLOVESYOUDG|Perth": 4,
+   "SIENNAFGDG|Melbourne": 2,
+   "SPIKELEVAINDG|Melbourne": 2,
+   "SR2211DG|Melbourne": 4,
+   "SUSANDG|Brisbane": 9,
+   "TDOGDG|Brisbane": 1,
+   "TOMSDG|Brisbane": 1,
+   "TWISTEDDG|Sydney": 4,
+   "XENODG|Sydney": 2
+  }
+ },
+ "past_weeks": [
+  {
+   "counts": {
+    "AVA10DG|Melbourne": 1,
+    "CHARLYBDG|Brisbane": 1,
+    "SIENNAFGDG|Melbourne": 2,
+    "SPIKELEVAINDG|Melbourne": 2,
+    "SR2211DG|Melbourne": 4
+   },
+   "label": "Week 5 (16\u201322 Nov)"
+  }
+ ],
+ "week_start": "2026-11-23"
+}
